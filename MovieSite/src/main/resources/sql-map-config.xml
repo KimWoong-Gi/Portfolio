@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<typeAliases>
+		<typeAlias type="com.woong.biz.user.UserVO" alias="user"></typeAlias>
+		<typeAlias type="com.woong.biz.movie.MovieVO" alias="movie"></typeAlias>
+		<typeAlias type="com.woong.biz.actor.ActorVO" alias="actor"></typeAlias>
+		<typeAlias type="com.woong.biz.movie.MyMovieVO" alias="mymovie"></typeAlias>
+		<typeAlias type="com.woong.biz.actor.MyActorVO" alias="myactor"></typeAlias>
+		<typeAlias type="com.woong.biz.board.BoardVO" alias="board"></typeAlias>
+		<typeAlias type="com.woong.biz.comment.CommentVO" alias="comment"></typeAlias>
+		<typeAlias type="com.woong.biz.input.InputVO" alias="input"></typeAlias>
+		<typeAlias type="com.woong.biz.movie.VodVO" alias="vod"></typeAlias>
+		
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/movie-mapping.xml" />
+		<mapper resource="mappings/actor-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/comment-mapping.xml" />
+		<mapper resource="mappings/input-mapping.xml" />
+	</mappers>
+</configuration>

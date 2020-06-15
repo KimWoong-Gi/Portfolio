@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MovieDAO">
+
+	<!-- 검색 값을 포함한 영화 리스트 -->
+	<select id="listMovie" parameterType="String" resultType="movie">
+		SELECT * FROM
+		(SELECT * FROM movie
+		WHERE mseq IN
+			(SELECT mseq FROM input
+			 WHERE aseq IN
+				(SELECT aseq FROM actor
+				 WHERE name =#{key}))
+		UNION
+		SELECT * FROM movie
+		WHERE title like '%'||#{key}||'%'
+		UNION
+		SELECT * FROM movie
+		WHERE director = #{key})
+		ORDER BY release desc
+	</select>
+	
+	<!-- 감독이 제작한 영화 리스트 -->
+	<select id="listMovieByDirector" parameterType="String" resultType="movie">
+		SELECT * FROM movie
+		WHERE director like '%'||#{key}||'%'
+	</select>
+	
+	<!-- 배우 필모그래피 (영화 상세 페이지에서 사용) -->
+	<select id="listMovieByActor" parameterType="int" resultType="movie">
+		SELECT * FROM movie
+		WHERE mseq IN
+			(SELECT mseq FROM input
+			 WHERE aseq = #{aseq})
+		ORDER BY release desc
+	</select>
+	
+	<select id="listMovieByTitle" parameterType="String" resultType="movie">
+		SELECT * FROM movie
+		WHERE title like '%'||#{key}||'%'
+	</select>
+	
+	<select id="listMovieByGenre" parameterType="String" resultType="movie">
+		SELECT * FROM movie
+		WHERE genre = #{genre}
+	</select>
+	
+	<select id="getMovie" resultType="movie">
+		SELECT * FROM movie
+		WHERE mseq = #{mseq}
+	</select>
+
+	<insert id="insertMovie">
+		INSERT INTO movie (mseq, title, director, release, runtime, content, image, trailer, genre, price)
+		VALUES(movie_seq.nextval, #{title}, #{director}, #{release}, #{runtime}, #{content}, #{image}, #{trailer}, #{genre}, #{price})
+	</insert>
+
+	<update id="updateMovie">
+		UPDATE movie
+		SET title=#{title}, director=#{director}, release=#{release}, runtime=#{runtime}, content=#{content}, image=#{image}, trailer=#{trailer}, genre=#{genre}, price=#{price}
+		WHERE mseq = #{mseq}
+	</update>
+
+	<delete id="deleteMovie">
+		DELETE FROM movie WHERE	mseq = #{mseq}
+	</delete>
+	
+	<select id="listMyMovie" parameterType="String" resultType="movie">
+		SELECT * FROM movie
+		WHERE mseq IN
+		(SELECT mseq FROM mymovie
+		WHERE id = #{id})
+	</select>
+	
+	<select id="getMyMovie" resultType="int">
+		SELECT count(*) FROM mymovie
+		WHERE id = #{id}
+		AND mseq = #{mseq}
+	</select>
+	
+	<insert id="addMyMovie">
+		INSERT INTO mymovie (id, mseq) values(#{id}, #{mseq})
+	</insert>
+
+	<!-- VOD 관련 매핑 -->
+	<select id="listVOD" parameterType="String" resultType="vod">
+		SELECT * FROM vod
+		WHERE id = #{id}
+	</select>
+	
+	<select id="getVOD" parameterType="vod" resultType="vod">
+		SELECT * FROM vod
+		WHERE mseq = #{mseq} and id=#{id}
+	</select>
+	
+	<insert id="insertVOD">
+		INSERT INTO vod (vseq, mseq, title, id, price) VALUES(vod_seq.nextval, #{mseq}, #{title}, #{id}, #{price})
+	</insert>
+	
+	<update id="updateVOD">
+		UPDATE vod
+		SET result='n'
+		WHERE vseq=#{vseq}
+	</update>
+	
+	<delete id="deleteVOD">
+		DELETE vod
+		WHERE vseq=#{vseq}
+	</delete>
+</mapper>

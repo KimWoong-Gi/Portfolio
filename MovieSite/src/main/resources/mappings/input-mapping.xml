@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="InputDAO">
+	
+	<select id="getInput" resultType="input">
+		select * from input where aseq=#{aseq} and mseq=#{mseq}
+	</select>
+	
+	<insert id="insertInput">
+		insert into input (aseq, mseq) values(#{aseq}, #{mseq})
+	</insert>
+	
+</mapper>
