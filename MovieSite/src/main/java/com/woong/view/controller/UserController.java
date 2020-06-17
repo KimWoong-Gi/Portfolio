@@ -213,13 +213,15 @@ public class UserController {
 	}
 	
 	@RequestMapping("user_update_form")
-	public String userUpdateView() {
+	public String userUpdateView(HttpSession session, Model model) {
+		UserVO user = (UserVO)session.getAttribute("loginUser");
+		model.addAttribute("user", user);
 		
 		return "user/update";
 	}
 	
 	@RequestMapping("user_update")
-	public String userUpdateAction(UserVO uVo) {
+	public String userUpdateAction(UserVO uVo, Model model) {
 		
 		us.updateUser(uVo);
 		

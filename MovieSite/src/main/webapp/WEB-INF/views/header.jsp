@@ -80,14 +80,21 @@
 							<ul class="navbar-nav mr-auto">
 								<c:choose>
 									<c:when test="${empty sessionScope.loginUser}">
-										<li class="nav-item"><a class="nav-link" href="user_login_form"><span class="glyphicon glyphicon-log-in"></span>로그인 </a></li>
-										<li class="nav-item"><a class="nav-link" href="user_join_contract"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
+										<li class="nav-item"><a class="nav-link" href="user_login_form">로그인 </a></li>
+										<li class="nav-item"><a class="nav-link" href="user_join_contract">회원가입</a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="nav-item"><a class="nav-link" href="user_logout"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
+										<li class="nav-item"><a class="nav-link" href="user_logout">로그아웃</a></li>
 										<c:choose>
 											<c:when test="${sessionScope.loginUser.admin == 'n'}">
-												<li class="nav-item"><a class="nav-link" href="user_mypage"><span class="glyphicon glyphicon"></span>마이페이지</a></li>
+												<c:choose>
+												<c:when test="${title == '마이페이지' }">
+												<li class="nav-item"><a class="nav-link" href="user_update_form">정보 수정</a></li>
+												</c:when>
+												<c:otherwise>
+												<li class="nav-item"><a class="nav-link" href="user_mypage">마이페이지</a></li>
+												</c:otherwise>
+												</c:choose>
 											</c:when>
 											<c:otherwise>
 												<li class="nav-item"><a class="nav-link" href="admin_main">관리자페이지</a></li>

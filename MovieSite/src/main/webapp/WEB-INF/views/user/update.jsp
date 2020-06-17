@@ -10,32 +10,31 @@
     <!-- Icon -->
     <div class="fadeIn first">
       <img src="images/main_images/login.png" id="icon" alt="User Icon" />
-      <h1>Join</h1>
+      <h1>Update</h1><br>
+      (아이디, 이름, 닉네임은 변경이 불가능합니다.)
     </div>
 
-    <!-- Join Form -->
+    <!-- Update Form -->
     <form name="frm" style="width:80%; text-align:left; margin: 0 0 0 170px;">
 	 <label for="id">아이디</label>
-	 <input type="text" class="fadeIn second" id="id" name="id">
-	 <input type="button" value="중복체크" onclick="return id_check()"><br> 
-	 <input type="hidden" name="reid" value="">
+	 <input type="text" id="id" name="id" value="${user.id}" readonly="readonly">
+	 <br> 
 	 <label for="pwd">비밀번호</label>
 	 <input	type="password" id="pwd" name="pwd"><br>
 	 <label for="pwdCheck">비밀번호 확인</label>
 	 <input	type="password"  id="pwdCheck" name="pwdCheck"><br>
 	 <label for="name">이름</label>
-	 <input	type="text"  id="name" name="name"><br>
+	 <input	type="text" id="name" name="name" value="${user.name}" readonly="readonly"><br>
 	 <label for="nickname">닉네임</label>
-	 <input type="text"  id="nickname" name="nickname">
-	 <input type="button" value="중복체크" onclick="return nickname_check()"><br> 
-	 <input type="hidden" name="renickname" value="">			
+	 <input type="text" id="nickname" name="nickname" value="${user.nickname}" readonly="readonly">
+	 <br> 			
 	 <label for="email">E-mail</label>
-	 <input	type="email"  id="email" name="email"><br>			
+	 <input	type="email"  id="email" name="email" value="${user.email}"><br>			
      <label for="phone">전화번호</label>
-	 <input	type="tel"  id="phone" name="phone"><br><br>
+	 <input	type="tel" id="phone" name="phone" value="${user.phone}"><br><br>
 	 <div style="float:center; margin: 0 0 0 100px;">
-	 <input type="button" value="회원가입" onclick="return join_check()">
-     <input type="reset" value="취소" onclick="location='user_login_form'"><br><br>
+	 <input type="button" value="수정" onclick="return update_check()">
+     <input type="reset" value="취소" onclick="location='user_mypage'"><br><br>
      </div>
     </form>
 

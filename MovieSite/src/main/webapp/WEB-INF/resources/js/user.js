@@ -89,6 +89,34 @@ function join_check() {
 	}
 }
 
+function update_check() {
+	if (document.frm.pwd.value == "") {
+		alert("비밀번호를 입력하세요!");
+		document.frm.pwd.focus();
+		return false;
+	} else if (document.frm.pwdCheck.value == "") {
+		alert("비밀번호를 한번 더 입력해 주세요!");
+		document.frm.pwdCheck.focus();
+		return false;
+	} else if (document.frm.pwd.value != document.frm.pwdCheck.value) {
+		alert("비밀번호가 동일하지 않습니다!");
+		document.frm.pwd.focus();
+		return false;
+	}  else if (document.frm.email.value == "") {
+		alert("이메일을 입력하세요!");
+		document.frm.email.focus();
+		return false;
+	} else if (document.frm.phone.value == "") {
+		alert("연락처를 입력하세요!");
+		document.frm.phone.focus();
+		return false;
+	} else{
+		alert("수정이 완료되었습니다.")
+		document.frm.action="user_update";
+		document.frm.submit();
+	}
+}
+
 function id_check() {
 	if (document.frm.id.value == "") {
 		alert("아이디를 입력해 주세요!");

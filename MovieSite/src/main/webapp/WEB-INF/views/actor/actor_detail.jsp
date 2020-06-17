@@ -15,7 +15,7 @@
 			출생: ${actor.born} <br> 나이:
 			${actor.age } <br> 신체: ${actor.body} <br>
 		</div>
-		<a href="add_mymovie?aseq=${actor.aseq}" style="float: right">
+		<a href="add_myactor?aseq=${actor.aseq}" style="float: right">
 		 <img src="images/main_images/favorite.png">마이리스트 추가
 		</a>
 	</div>
