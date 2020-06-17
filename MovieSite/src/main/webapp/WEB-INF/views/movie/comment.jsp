@@ -70,7 +70,7 @@ function save_comment(mseq){
 	}
 }
 
-// 상품평 목록 불러오기
+//  목록 불러오기
 function getCommentList(){
 	$.ajax({
 		type: 'GET',
