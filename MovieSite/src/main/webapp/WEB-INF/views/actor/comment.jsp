@@ -22,7 +22,7 @@
                 <table class="table">                    
                     <tr>
                         <td>
-                            <textarea style="width: 650px" rows="3" cols="30" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 90%" rows="3" cols="30" id="content" name="content" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
                                 <a href='#' onClick="save_comment('${actor.aseq}')" class="btn btn-info">등록</a>
@@ -36,7 +36,7 @@
     </form>
 </div>
 <div class="container">
-    <form id="commentListForm" name="commentListForm" method="post">
+    <form id="commentListForm" name="commentListForm" method="post" style="width:100%">
         <div id="commentList">
         </div>
     </form>
@@ -89,6 +89,7 @@ function getCommentList(){
 	                    html += "<span id=\"write_date\">" + displayTime(data[i].regdate) + "</span>&nbsp;&nbsp;&nbsp;"
 	                    html += data[i].content+"<br></div>"
 	                    html += "</div>";
+	                    html += "<br>";
 				}
 			}else{
 				html += "<div>";

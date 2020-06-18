@@ -142,7 +142,7 @@ public class MovieActorController {
 			vo.setMseq(mseq);
 			vo.setPrice(movie.getPrice());
 			vo.setTitle(movie.getTitle());
-			System.out.println(vo);
+			
 			if (ms.getVOD(vo) != null) {
 				return "user/buyvod_fail";
 			} else {
@@ -155,13 +155,27 @@ public class MovieActorController {
 		}
 	}
 	
+	@RequestMapping("update_vod")
+	public String updateVod(HttpSession session, VodVO vVo) {
+		UserVO user = (UserVO) session.getAttribute("loginUser");
+		
+	if (user != null) {
+		ms.updateVOD(vVo);
+		
+		return "redirect: user_mypage";
+
+	} else {
+		return "user/login_fail";
+	}
+	}
+	
 	@RequestMapping("cancel_vod")
 	public String cancelVod(HttpSession session, VodVO vVo) {
 		UserVO user = (UserVO) session.getAttribute("loginUser");
 		if (user != null) {
 			ms.deleteVOD(vVo);
 			
-			return "user_mypage";
+			return "redirect: user_mypage";
 		} else {
 			return "user/login_fail";
 		}

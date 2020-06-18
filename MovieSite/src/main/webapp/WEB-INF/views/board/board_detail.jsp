@@ -67,7 +67,7 @@
 		</c:otherwise>
 		</c:choose>
 
-		 <input type="button" class="btn btn-info" value="목록" onclick="history.go(-1)">
+		 <input type="button" class="btn btn-info" value="목록" onclick="location.href='board_list?category=${board.category}'">
 		</div>
 		
 		<%@include file="comment.jsp" %> 	

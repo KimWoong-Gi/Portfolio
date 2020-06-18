@@ -47,10 +47,10 @@
 	
 	<article>
 		<section>
-			<h2>VOD 구매 목록</h2>	<hr>
+			<h2>VOD 장바구니</h2>	<hr>
 			<c:choose>
 				<c:when test="${vodList.size() == 0}">
-					<h3 style="color: red;">VOD 구매 목록이 없습니다.</h3>
+					<h3 style="color: red;">장바구니 목록이 없습니다.</h3>
 				</c:when>
 				<c:otherwise>
 					 <div class="row p-5">
@@ -61,7 +61,7 @@
                                         <th class="border-0 text-uppercase small font-weight-bold">번호</th>
                                         <th class="border-0 text-uppercase small font-weight-bold">제목</th>
                                         <th class="border-0 text-uppercase small font-weight-bold">가격</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">구매일자</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">추가일자</th>
                                         <th class="border-0 text-uppercase small font-weight-bold text-center">결제</th>
                                     </tr>
                                 </thead>
@@ -106,7 +106,7 @@
 			</c:choose>
 		</section>
 	</article>
-	
+</div>	
 	
 
 <%@ include file="../footer.jsp"%>

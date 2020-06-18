@@ -101,7 +101,7 @@
 	
 	<update id="updateVOD">
 		UPDATE vod
-		SET result='n'
+		SET result='y'
 		WHERE vseq=#{vseq}
 	</update>
 	

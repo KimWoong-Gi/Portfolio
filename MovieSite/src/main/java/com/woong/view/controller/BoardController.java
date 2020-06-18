@@ -137,6 +137,8 @@ public class BoardController {
 			}
 			bVo.setImage(fileName);
 
+		}else {
+			bVo.setImage("default.jpg");
 		}
 		bs.updateBoard(bVo);
 
