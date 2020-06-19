@@ -34,5 +34,5 @@ function find_id_form(){
 	var url = "find_id_form";
 	
 	window.open(url, "_blank_1", "toolbar-no, menubar=no," +
-	" scrollbars=yes, resizable=no, width=500, height= 600, top=300, left=300");
+	" scrollbars=no, resizable=no, width=400, height= 500, top=300, left=300");
 }

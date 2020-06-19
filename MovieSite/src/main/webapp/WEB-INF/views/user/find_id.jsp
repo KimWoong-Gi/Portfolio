@@ -9,7 +9,7 @@
 <script type="text/javascript" src="js/find.js"></script>
 <title>${title}</title>
 </head>
-<body>
+<body style="width:400; height:600">
 	<div id="wrap">
 		<h1>아이디, 비밀번호 찾기</h1>
 		<br>

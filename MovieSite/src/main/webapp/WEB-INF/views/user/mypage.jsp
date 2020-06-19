@@ -5,7 +5,11 @@
 <div id="list" style="text-align: left">
 	<article>
 		<section>
-			<h2>영화</h2>	<hr>
+			<ol class="breadcrumb" style="">
+		  		<li class="breadcrumb-item active">마이리스트</li>
+		  		<li class="breadcrumb-item active">영화</li>
+			</ol>
+				<hr>
 			<c:choose>
 				<c:when test="${movieList.size() == 0}">
 					<h3 style="color: red;">추가한 마이 리스트가 없습니다.</h3>
@@ -26,7 +30,11 @@
 	
 	<article>
 		<section>
-			<h2>배우</h2>	<hr>
+			<ol class="breadcrumb" style="">
+		  		<li class="breadcrumb-item active">마이리스트</li>
+		  		<li class="breadcrumb-item active">배우</li>
+			</ol>
+			<hr>
 			<c:choose>
 				<c:when test="${actorList.size() == 0}">
 					<h3 style="color: red;">추가한 마이 리스트가 없습니다.</h3>
@@ -47,7 +55,11 @@
 	
 	<article>
 		<section>
-			<h2>VOD 장바구니</h2>	<hr>
+			<ol class="breadcrumb" style="">
+		  		<li class="breadcrumb-item active">마이리스트</li>
+		  		<li class="breadcrumb-item active">VOD 장바구니</li>
+			</ol>
+				<hr>
 			<c:choose>
 				<c:when test="${vodList.size() == 0}">
 					<h3 style="color: red;">장바구니 목록이 없습니다.</h3>

@@ -216,7 +216,7 @@ public class UserController {
 	public String userUpdateView(HttpSession session, Model model) {
 		UserVO user = (UserVO)session.getAttribute("loginUser");
 		model.addAttribute("user", user);
-		
+		model.addAttribute("title", "회원 정보 수정");
 		return "user/update";
 	}
 	
