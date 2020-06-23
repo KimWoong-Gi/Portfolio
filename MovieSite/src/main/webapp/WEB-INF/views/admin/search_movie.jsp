@@ -9,11 +9,16 @@
 	</form>
 </div>
 </div>
-
+<ol class="breadcrumb" style="">
+		  		<li class="breadcrumb-item active">관리자페이지</li>
+		  		<li class="breadcrumb-item active">영화관리</li>
+		  		<li class="breadcrumb-item active">영화수정</li>
+		  		<li class="breadcrumb-item active">[${key}] 검색 결과</li>
+			</ol>
 <div id="list">
 	<article>
 		<section>
-			<h2>영화</h2>	<hr>
+			<hr>
 			<c:choose>
 				<c:when test="${movieList.size() == 0}">
 					<h3 style="color: red;">검색 결과가 없습니다.</h3>

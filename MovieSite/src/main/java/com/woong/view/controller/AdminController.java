@@ -21,6 +21,9 @@ import com.woong.biz.input.InputService;
 import com.woong.biz.input.InputVO;
 import com.woong.biz.movie.MovieService;
 import com.woong.biz.movie.MovieVO;
+import com.woong.biz.movie.VodVO;
+import com.woong.biz.user.UserService;
+import com.woong.biz.user.UserVO;
 
 @Controller
 public class AdminController {
@@ -34,9 +37,15 @@ public class AdminController {
 	@Autowired
 	private InputService is;
 
+	@Autowired
+	private UserService us;
+
 	@RequestMapping("admin_main")
 	public String adminPageView(Model model) {
 		model.addAttribute("title", "관리자 페이지");
+		List<UserVO> userList = us.listUser();
+
+		model.addAttribute("userList", userList);
 		return "admin/main";
 	}
 
@@ -70,25 +79,25 @@ public class AdminController {
 
 		return "redirect: admin_main";
 	}
-	
+
 	@RequestMapping("movie_update_form")
 	public String updateMovieView(Model model, MovieVO mVo) {
 		MovieVO movie = ms.getMovie(mVo);
-		
+
 		String year = movie.getRelease().substring(0, 4);
 		String month = movie.getRelease().substring(4, 6);
 		String day = movie.getRelease().substring(6, 8);
-		movie.setRelease(year+"-"+month+"-"+day);
+		movie.setRelease(year + "-" + month + "-" + day);
 		model.addAttribute("movie", movie);
 		model.addAttribute("title", "영화 수정");
 		String[] list = { "액션", "SF", "드라마", "멜로/로맨스", "코미디", "가족", "애니", "공포", "스릴러", "모험" };
 		model.addAttribute("genreList", list);
 		return "admin/movie_update";
 	}
-	
+
 	@RequestMapping(value = "movie_update", method = RequestMethod.POST)
-	public String updateMovie(@RequestParam(value = "image1", required = false) MultipartFile uploadFile, HttpSession session,
-			MovieVO mVo) throws IOException {
+	public String updateMovie(@RequestParam(value = "image1", required = false) MultipartFile uploadFile,
+			HttpSession session, MovieVO mVo) throws IOException {
 		String fileName = "";
 		if (!uploadFile.isEmpty()) {
 			String root_path = session.getServletContext().getRealPath("WEB-INF/resources/images/movie_images/");
@@ -100,7 +109,7 @@ public class AdminController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			mVo.setImage(fileName);
 		}
 		String[] list = { "", "액션", "SF", "드라마", "멜로/로맨스", "코미디", "가족", "애니", "공포", "스릴러", "모험" };
@@ -111,7 +120,7 @@ public class AdminController {
 
 		String release = mVo.getRelease().replace("-", "");
 		mVo.setRelease(release);
-		
+
 		ms.updateMovie(mVo);
 
 		return "redirect: admin_main";
@@ -137,19 +146,19 @@ public class AdminController {
 
 		return "redirect: admin_main";
 	}
-	
+
 	@RequestMapping("actor_update_form")
 	public String updateActorView(Model model, ActorVO aVo) {
 		ActorVO actor = as.getActor(aVo);
-		
+
 		model.addAttribute("actor", actor);
 		model.addAttribute("title", "배우 수정");
 		return "admin/actor_update";
 	}
-	
+
 	@RequestMapping(value = "actor_update", method = RequestMethod.POST)
-	public String updateActor(@RequestParam(value = "image1", required = false) MultipartFile uploadFile, HttpSession session,
-			ActorVO aVo) throws IOException {
+	public String updateActor(@RequestParam(value = "image1", required = false) MultipartFile uploadFile,
+			HttpSession session, ActorVO aVo) throws IOException {
 		String fileName = "";
 		if (!uploadFile.isEmpty()) {
 			String root_path = session.getServletContext().getRealPath("WEB-INF/resources/images/actor_images/");
@@ -161,10 +170,10 @@ public class AdminController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			aVo.setImage(fileName);
 		}
-		
+
 		as.updateActor(aVo);
 
 		return "redirect: admin_main";
@@ -198,7 +207,7 @@ public class AdminController {
 	public String actorInputForm(@RequestParam(value = "mseq", defaultValue = "", required = false) Integer mseq,
 			@RequestParam(value = "aseq", defaultValue = "", required = false) Integer aseq,
 			@RequestParam(value = "key", defaultValue = "/", required = false) String key, Model model,
-			HttpSession session) throws IOException{
+			HttpSession session) throws IOException {
 
 		List<ActorVO> searchList = as.listActorByName(key);
 		model.addAttribute("searchList", searchList);
@@ -233,7 +242,7 @@ public class AdminController {
 	public String movieInputForm(@RequestParam(value = "mseq", defaultValue = "", required = false) Integer mseq,
 			@RequestParam(value = "aseq", defaultValue = "", required = false) Integer aseq,
 			@RequestParam(value = "key", defaultValue = "/", required = false) String key, Model model,
-			HttpSession session) throws IOException{
+			HttpSession session) throws IOException {
 
 		List<MovieVO> searchList = ms.listMovieByTitle(key);
 		model.addAttribute("searchList", searchList);
@@ -317,26 +326,69 @@ public class AdminController {
 
 		return "redirect:search_movie?key=''";
 	}
-	
+
 	@RequestMapping("movie_input_cancel")
 	public String movieInputCancel(HttpSession session, Model model) {
 		session.removeAttribute("movieList");
 
 		return "redirect:search_actor?key=''";
 	}
-	
+
 	@RequestMapping("actor_delete")
 	public String actorDelete(ActorVO aVo) {
 		as.deleteActor(aVo);
-		
+
 		return "redirect:search_actor?key=''";
 	}
-	
+
 	@RequestMapping("movie_delete")
 	public String movieDelete(MovieVO mVo) {
 		ms.deleteMovie(mVo);
-		
+
 		return "redirect:search_movie?key=''";
 	}
+	
+	@RequestMapping("user_detail")
+	public String userDetail(Model model, UserVO uVo) {
+		UserVO user = us.getUserById(uVo.getId());
+		
+		model.addAttribute("user", user);
+		model.addAttribute("title", "회원 정보 수정 : ["+uVo.getId()+"]");
+		
+		return "admin/user_detail";
+	}
+	
+	@RequestMapping("admin_user_update")
+	public String adminUserUpdate(UserVO uVo) {
+		us.updateUser(uVo);
+		
+		return "redirect: admin_main";
+	}
 
+	@RequestMapping("user_delete_admin")
+	public String userDeleteAdmin(UserVO uVo) {
+		us.deleteUser(uVo.getId());
+
+		return "redirect: admin_main";
+	}
+	
+	@RequestMapping("user_vod")
+	public String userVOD(UserVO uVo, Model model) {
+		List<VodVO> vodList = ms.listVOD(uVo.getId());
+		
+		model.addAttribute("vodList",vodList);
+		model.addAttribute("user", uVo.getId());
+		int price = 0;
+		int buy = 0;
+		for(VodVO vod: vodList) {
+			if(vod.getResult().equals("y")) {
+				buy += Integer.parseInt(vod.getPrice());
+			}else {
+				price += Integer.parseInt(vod.getPrice());
+			}
+		}
+		model.addAttribute("buy", buy);
+		model.addAttribute("price", price);
+		return "admin/user_vod";
+	}
 }

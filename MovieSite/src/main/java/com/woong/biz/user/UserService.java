@@ -1,5 +1,7 @@
 package com.woong.biz.user;
 
+import java.util.List;
+
 public interface UserService {
 
 	UserVO getUserById(String id);
@@ -15,5 +17,6 @@ public interface UserService {
 	void updateUser(UserVO uVo);
 
 	void deleteUser(String id);
-
+	
+	List<UserVO> listUser();
 }

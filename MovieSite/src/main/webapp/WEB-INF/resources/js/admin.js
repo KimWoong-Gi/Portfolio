@@ -24,16 +24,6 @@ function actor_input_form(mseq){
 	});
 }
 
-function actor_input_form1(mseq){
-	var url = "actor_input_form1?mseq="+mseq;
-	var name = "_blank_1";
-	var options = "toolbar-no, menubar=no, scrollbars=yes, resizable=no, width=450, height= 500;";
-	
-	window.openDialog(url, name, options, function(win){
-		location.href="actor_input_cancel";
-	});
-}
-
 function movie_input_form(aseq){
 	var url = "movie_input_form?aseq="+aseq;
 	var name = "_blank_1";
@@ -90,4 +80,11 @@ function input_cancel_check(){
 	} else {
 		return false;
 	}
+}
+
+function user_vod_form(id){
+	var url = "user_vod?id="+id;
+	
+	window.open(url, "_blank_1", "toolbar-no, menubar=no," +
+	" scrollbars=no, resizable=no, width=600, height= 450, top=300, left=300");
 }

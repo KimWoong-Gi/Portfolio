@@ -1,5 +1,7 @@
 package com.woong.biz.user.impl;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -45,6 +47,11 @@ public class UserDAO {
 	public void deleteUser(String id) {
 
 		mybatis.delete("UserDAO.deleteUser", id);
+	}
+	
+	public List<UserVO> listUser(){
+		
+		return mybatis.selectList("UserDAO.listUser");
 	}
 
 }

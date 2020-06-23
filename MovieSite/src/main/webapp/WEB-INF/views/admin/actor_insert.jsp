@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <div style="width:100%" align="center">
-	<h1>영화 등록</h1>
+	<h1>배우 등록</h1>
 	<form name="frm" method="post" action="actor_insert" enctype="multipart/form-data" style="width:80%">
 		<table id="insert" class="table table-bordered" style="text-align:center">
 			<tr>

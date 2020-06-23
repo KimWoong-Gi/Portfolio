@@ -4,6 +4,10 @@
 
 <mapper namespace="UserDAO">
 
+	<select id="listUser" resultType="user">
+		select * from users where admin = 'n'
+	</select>
+
 	<select id="getUserById" parameterType="String" resultType="user">
 		SELECT * FROM users	WHERE id = #{id}
 	</select>

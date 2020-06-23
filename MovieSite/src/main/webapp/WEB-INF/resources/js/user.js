@@ -124,7 +124,6 @@ function id_check() {
 		return false;
 	}
 
-	// 아이디 중복 체크 창 생성.
 	var url = "id_check_form?id=" + document.frm.id.value;
 
 	window.open(url, "_blank_1", "toolbar-no, menubar=no,"
@@ -138,7 +137,6 @@ function nickname_check() {
 		return false;
 	}
 
-	// 아이디 중복 체크 창 생성.
 	var url = "nickname_check_form?nickname=" + document.frm.nickname.value;
 
 	window.open(url, "_blank_1", "toolbar-no, menubar=no,"

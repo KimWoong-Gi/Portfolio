@@ -227,4 +227,12 @@ public class UserController {
 		
 		return "redirect: user_mypage";
 	}
+	
+	@RequestMapping("user_delete")
+	public String userDelete(UserVO uVo) {
+		
+		us.deleteUser(uVo.getId());
+		
+		return "main/index";
+	}
 }
