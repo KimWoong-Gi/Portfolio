@@ -13,7 +13,7 @@
 	<div id="wrap">
 		<h1>아이디, 비밀번호 찾기</h1>
 		<br>
-		<form name="findId">
+		<form name="findId" action="find_id" method="post">
 			<table>
 				<tr>
 					<td align="right"><label> 이름</label></td>
@@ -25,13 +25,13 @@
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-					<input type="button" value="아이디 찾기" onclick="findUserId()">
+					<input type="submit" value="아이디 찾기" onclick="findUserId()">
 					</td>
 				</tr>
 			</table>
 		</form>
 		<p><p><p><p><p><p><p><p><p><p><p><p>
-		<form name="findPW">
+		<form name="findPW" action="find_pwd" method="post">
 			<table>
 				<tr>
 					<td align="right"><label> 이름</label></td>
@@ -47,7 +47,7 @@
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-					<input type="button"	value="비밀번호 찾기" onclick="findPassword()">
+					<input type="submit"	value="비밀번호 찾기" onclick="findPassword()">
 					</td>
 				</tr>
 			</table>

@@ -32,7 +32,7 @@
 	 <div style="float:center;">
 	 <input type="submit" value="수정">
 	 <input type="button" value="삭제" onclick="return delete_check()">
-     <input type="reset" value="취소" onclick="location='user_list'"><br><br>
+     <input type="reset" value="취소" onclick="location='admin_main'"><br><br>
      </div>
     </form>
 

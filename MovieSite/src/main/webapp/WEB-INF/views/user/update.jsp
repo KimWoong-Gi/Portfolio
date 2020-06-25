@@ -15,7 +15,7 @@
     </div>
 
     <!-- Update Form -->
-    <form name="frm" style="width:80%; text-align:left; margin: 0 0 0 170px;">
+    <form name="frm" style="width:80%; text-align:left; margin: 0 0 0 170px;" action="user_update" method="post">
 	 <label for="id">아이디</label>
 	 <input type="text" id="id" name="id" value="${user.id}" readonly="readonly">
 	 <br> 
@@ -33,7 +33,7 @@
      <label for="phone">전화번호</label>
 	 <input	type="tel" id="phone" name="phone" value="${user.phone}"><br><br>
 	 <div style="float:center; margin: 0 0 0 100px;">
-	 <input type="button" value="수정" onclick="return update_check()">
+	 <input type="submit" value="수정" onclick="return update_check()">
      <input type="reset" value="취소" onclick="location='user_mypage'"><br><br>
      </div>
     </form>

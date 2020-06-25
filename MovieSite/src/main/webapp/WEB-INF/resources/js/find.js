@@ -8,8 +8,6 @@ function findUserId(){
 		document.findId.email.focus();
 		return false;
 	}
-	document.findId.action = "find_id";
-	document.findId.submit();	
 }
 
 function findPassword(){
@@ -26,8 +24,6 @@ function findPassword(){
 		document.findPW.id.focus();
 		return false;
 	}
-	document.findPW.action = "find_pwd";
-	document.findPW.submit();
 }
 
 function find_id_form(){

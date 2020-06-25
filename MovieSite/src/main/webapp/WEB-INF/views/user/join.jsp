@@ -14,7 +14,7 @@
     </div>
 
     <!-- Join Form -->
-    <form name="frm" style="width:80%; text-align:left; margin: 0 0 0 170px;">
+    <form name="frm" style="width:80%; text-align:left; margin: 0 0 0 170px;" action="user_join" method="post">
 	 <label for="id">아이디</label>
 	 <input type="text" class="fadeIn second" id="id" name="id">
 	 <input type="button" value="중복체크" onclick="return id_check()"><br> 
@@ -34,7 +34,7 @@
      <label for="phone">전화번호</label>
 	 <input	type="tel"  id="phone" name="phone"><br><br>
 	 <div style="float:center; margin: 0 0 0 100px;">
-	 <input type="button" value="회원가입" onclick="return join_check()">
+	 <input type="submit" value="회원가입" onclick="return join_check()">
      <input type="reset" value="취소" onclick="location='user_login_form'"><br><br>
      </div>
     </form>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -40,7 +41,7 @@ public class UserController {
 		return "user/login";
 	}
 
-	@RequestMapping("user_login")
+	@RequestMapping(value="user_login", method=RequestMethod.POST)
 	public String userLoginAction(Model model, UserVO uVo) {
 		UserVO vo = us.getUserById(uVo.getId());
 		if (vo != null) {
@@ -131,7 +132,7 @@ public class UserController {
 		return "user/nickname_check";
 	}
 	
-	@RequestMapping("user_join")
+	@RequestMapping(value="user_join", method=RequestMethod.POST)
 	public String userJoinAction(UserVO uVo) {
 		us.insertUser(uVo);
 		
@@ -144,7 +145,7 @@ public class UserController {
 		return "user/find_id";
 	}
 	
-	@RequestMapping("find_id")
+	@RequestMapping(value="find_id", method=RequestMethod.POST)
 	public String findId(Model model, UserVO uVo) {
 		UserVO user = new UserVO();
 		user.setName(uVo.getName());
@@ -162,7 +163,7 @@ public class UserController {
 		return "user/find_id_result";
 	}
 	
-	@RequestMapping("find_pwd")
+	@RequestMapping(value="find_pwd", method=RequestMethod.POST)
 	public String findPwd(Model model, UserVO uVo) {
 		UserVO user = new UserVO();
 		user.setId(uVo.getId());
@@ -220,7 +221,7 @@ public class UserController {
 		return "user/update";
 	}
 	
-	@RequestMapping("user_update")
+	@RequestMapping(value="user_update", method=RequestMethod.POST)
 	public String userUpdateAction(UserVO uVo, Model model) {
 		
 		us.updateUser(uVo);

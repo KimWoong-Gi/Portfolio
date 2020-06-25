@@ -358,7 +358,7 @@ public class AdminController {
 		return "admin/user_detail";
 	}
 	
-	@RequestMapping("admin_user_update")
+	@RequestMapping(value="admin_user_update", method=RequestMethod.POST)
 	public String adminUserUpdate(UserVO uVo) {
 		us.updateUser(uVo);
 		

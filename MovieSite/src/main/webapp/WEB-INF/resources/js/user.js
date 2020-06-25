@@ -10,9 +10,6 @@ function login_check() {
 		alert("비밀번호를 입력하세요!")
 		document.frm.pwd.focus();
 		return false;
-	} else{
-		document.frm.action="user_login";
-		document.frm.submit();
 	}
 }
 
@@ -36,8 +33,8 @@ function contract_check() {
 	if (document.frm.okon1[1].checked == true) {
 		alert("약관에 동의하셔야 합니다!")
 		return false;
-	} else{
-		document.frm.action="user_join_form";
+	} else {
+		document.frm.action = "user_join_form";
 		document.frm.submit();
 	}
 }
@@ -83,9 +80,6 @@ function join_check() {
 		alert("연락처를 입력하세요!");
 		document.frm.phone.focus();
 		return false;
-	} else{
-		document.frm.action="user_join";
-		document.frm.submit();
 	}
 }
 
@@ -102,7 +96,7 @@ function update_check() {
 		alert("비밀번호가 동일하지 않습니다!");
 		document.frm.pwd.focus();
 		return false;
-	}  else if (document.frm.email.value == "") {
+	} else if (document.frm.email.value == "") {
 		alert("이메일을 입력하세요!");
 		document.frm.email.focus();
 		return false;
@@ -110,10 +104,8 @@ function update_check() {
 		alert("연락처를 입력하세요!");
 		document.frm.phone.focus();
 		return false;
-	} else{
+	} else {
 		alert("수정이 완료되었습니다.")
-		document.frm.action="user_update";
-		document.frm.submit();
 	}
 }
 

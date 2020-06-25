@@ -13,10 +13,10 @@
     </div>
 
     <!-- Login Form -->
-    <form name="frm">
+    <form name="frm" action="user_login" method="post">
       <input type="text" id="login" class="fadeIn second" name="id" placeholder="username">
       <input type="password" id="password" class="fadeIn third" name="pwd" placeholder="password">
-      <input type="button" class="fadeIn fourth" value="로그인" onclick="return login_check()">
+      <input type="submit" class="fadeIn fourth" value="로그인" onclick="return login_check()">
 	  <label style="width:100%">${message}</label>
     </form>
 
